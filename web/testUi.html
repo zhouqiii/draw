@@ -108,8 +108,7 @@
             $('.weui_tab_bd').find(tabId).addClass('weui_tab_bd_item_active').siblings().removeClass('weui_tab_bd_item_active');
         });
         document.body.addEventListener('touchmove', function(e) {
-            e.preventDefault();
-        });
+        },{passive:false});
         var drag = new Drag({dragEle: '.drag'});
     });
 </script>
