@@ -1,50 +1,73 @@
 <!DOCTYPE html >
-<html >
+<html>
 <head>
-    <title>Chat Room</title>
-    <link href="/webjars/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <!--cant find-->
-    <!--<link href="/main.css" rel="stylesheet">-->
-    <script src="/webjars/jquery/jquery.min.js"></script>
-    <script src="/webjars/sockjs-client/sockjs.min.js"></script>
-    <script src="/webjars/stomp-websocket/stomp.min.js"></script>
-    <script src="js/app.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, target-densitydpi=device-dpi, initial-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-app-web-capable" content="yes">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>DRAG</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            -webkit-user-select: none;
+        }
+        .content {
+            width: 80%;
+            height: 100%;
+            margin: 40px auto 0;
+        }
+        .left, .list {
+            width: 100%;
+        }
+        .list {
+            padding-left: 5%;
+            user-select: none;
+            cursor: pointer;
+        }
+        .box {
+            margin: 40px auto;
+            width: 200px;
+            height: 200px;
+            background: url("img/aaaaa.png") no-repeat;
+            background-size: contain;
+            opacity: .5;
+        }
+        .drag {
+            display: inline-block;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
-<noscript><h2 style="color: #ff0000">Seems your browser doesn't support Javascript! Websocket relies on Javascript being
-    enabled. Please enable
-    Javascript and reload this page!</h2></noscript>
-<div id="main-content" class="container">
-    <div class="row">
-        <div class="col-md-3">
-            <div class="form-inline">
-                    <label for="userName">I'm:</label>
-                    <input id="userName" type="text" class="form-control" >
-            </div>
-        </div>
-        <div class="col-md-9">
-            <form class="form-inline">
-                <div class="form-group">
-                    <label for="message">Message:</label>
-                    <input type="text" id="message" class="form-control" placeholder="Hello World...">
-                </div>
-                <button id="send" class="btn btn-default" type="submit">Send</button>
-            </form>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-12">
-            <table id="conversation" class="table table-striped">
-                <thead>
-                <tr>
-                    <th>Messages</th>
-                </tr>
-                </thead>
-                <tbody id="messages">
-                </tbody>
-            </table>
-        </div>
-    </div>
+<div id="main" class="weui-tab">
+<p class="drag">hihi</p>
 </div>
 </body>
+<script src="./js/drag.js"></script>
+<script>
+    document.body.addEventListener('touchmove', function(e) {
+        e.preventDefault();
+    });
+    var drag = new Drag({dragEle: '.drag',
+        onStart: function(e) {
+            e.innerHTML = "我被抓到了";
+        },
+        onMove: function(e) {
+            e.innerHTML = "我在移动";
+            // console.log('move');
+        },
+        onMoveIn: function(e) {
+        },
+        onEnd: function(e) {
+            e.innerHTML = "我停下来了";
+        },
+    });
+
+</script>
 </html>

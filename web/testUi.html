@@ -24,7 +24,9 @@
 <div class="weui-tab">
     <div class="weui_tab_bd">
         <div id="tab1" class="weui_tab_bd_item weui_tab_bd_item_active">
-            <div id="labelContainer"></div>
+            <div id="labelContainer">
+                <p class="drag">*=*</p>
+            </div>
             <div id="drawContainer"></div>
             <input type="button" id="clearCan" value="获得空白">
             <div id="console-container"></div>
@@ -105,12 +107,17 @@
             var tabId = $(this).attr('href');
             $('.weui_tab_bd').find(tabId).addClass('weui_tab_bd_item_active').siblings().removeClass('weui_tab_bd_item_active');
         });
+        document.body.addEventListener('touchmove', function(e) {
+            e.preventDefault();
+        });
+        var drag = new Drag({dragEle: '.drag'});
     });
 </script>
 <script src="./js/chat.js"></script>
 <script src="./js/upload.js"></script>
 <script src="./js/download.js"></script>
 <script src="./js/drawboard.js"></script>
+<script src="./js/drag.js"></script>
 
 </body>
 </html>
