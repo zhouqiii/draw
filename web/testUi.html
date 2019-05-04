@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head lang="zh">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Zhouqiii</title>
+    <link rel="stylesheet" href="./weui-2.0.0/dist/style/weui.min.css"/>
+    <link rel="stylesheet" href="http://cdn.bootcss.com/jquery-weui/0.8.0/css/jquery-weui.min.css">
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="css/chat.css"/>
+    <link rel="stylesheet" href="css/drawboard.css"/>
+</head>
+<body>
+<noscript><h2 style="color: #ff0000">Seems your browser doesn't support Javascript! Websocket relies on Javascript being
+    enabled. Please enable
+    Javascript and reload this page!</h2></noscript>
+<style>
+    .weui_tab_bd .weui_tabbar_item {
+        display: none;
+    }
+</style>
+<div class="weui-tab">
+    <div class="weui_tab_bd">
+        <div id="tab1" class="weui_tab_bd_item weui_tab_bd_item_active">
+            <div id="labelContainer"></div>
+            <div id="drawContainer"></div>
+            <input type="button" id="clearCan" value="获得空白">
+            <div id="console-container"></div>
+        </div>
+        <div id="tab2" class="weui_tab_bd_item">
+            <form id="uploadForm"  enctype="multipart/form-data">
+                上传用户：<input type="text" name="username"><br/>
+                上传文件：<input id="fileUp" type="file" name="file1"><br/>
+                <input type="button" id="submit" value="传输">
+            </form>
+            <div id="uploadMessage">
+
+            </div>
+            <input type="button" id="downLoad" value="下载列表">
+            <div id="downLoadMessage">
+
+            </div>
+        </div>
+        <div id="tab3" class="weui_tab_bd_item">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-inline">
+                        <label for="userName">I'm:</label>
+                        <input id="userName" type="text" class="form-control">
+                    </div>
+                </div>
+                <div class="col-md-9">
+                    <div class="form-inline">
+                        <div class="form-group">
+                            <label for="chat">Message:</label>
+                            <input type="text" id="chat" class="form-control" placeholder="Hello World...">
+                        </div>
+                        <button id="send" class="btn btn-default" type="submit">Send</button>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <table id="conversation" class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>Messages</th>
+                        </tr>
+                        </thead>
+                        <tbody id="messages">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="weui-tabbar" style="position:fixed ; bottom:0px;width:100%">
+        <a href="#tab1" class="weui-tabbar__item weui-bar__item_on">
+            <div class="weui-tabbar__icon"><img src="./images/icon_nav_special.png" alt=""></div>
+            <p class="weui-tabbar__label">白板</p>
+        </a>
+        <a href="#tab2" class="weui-tabbar__item">
+            <div class="weui-tabbar__icon"><img src="./images/icon_nav_z-index.png" alt=""></div>
+            <p class="weui-tabbar__label">文件</p>
+        </a>
+        <a href="#tab3" class="weui-tabbar__item">
+            <div class="weui-tabbar__icon"><img src="./images/icon_nav_form.png" alt=""></div>
+            <p class="weui-tabbar__label">人们</p>
+        </a>
+
+    </div>
+</div>
+<script src="./js/sockjs.min.js"></script>
+<script src="./js/jquery-2.0.0.min.js"></script>
+<script src="./js/bootstrap.min.js"></script>
+<script type="text/javascript">
+
+    $(function () {
+        $('.weui-tabbar__item').on('click', function () {
+            $(this).addClass('weui-bar__item_on').siblings('.weui-bar__item_on').removeClass('weui-bar__item_on');
+            var tabId = $(this).attr('href');
+            $('.weui_tab_bd').find(tabId).addClass('weui_tab_bd_item_active').siblings().removeClass('weui_tab_bd_item_active');
+        });
+    });
+</script>
+<script src="./js/chat.js"></script>
+<script src="./js/upload.js"></script>
+<script src="./js/download.js"></script>
+<script src="./js/drawboard.js"></script>
+
+</body>
+</html>

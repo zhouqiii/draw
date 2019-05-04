@@ -1,0 +1,47 @@
+body {
+    font-family: Arial, sans-serif;
+    font-size: 11pt;
+    background-color: #eeeeea;
+    padding: 10px;
+}
+
+#console-container {
+    float: left;
+    background-color: #fff;
+    width: 250px;
+}
+
+#console {
+    font-size: 10pt;
+    height: 600px;
+    overflow-y: scroll;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+#console p {
+    padding: 0;
+    margin: 0;
+}
+
+#drawContainer {
+    float: left;
+    display: none;
+    margin-right: 25px;
+}
+
+#drawContainer canvas {
+    display: block;
+    -ms-touch-action: none;
+    touch-action: none; /* Disable touch behaviors, like pan and zoom */
+    cursor: crosshair;
+}
+
+#labelContainer {
+    margin-bottom: 15px;
+}
+
+#drawContainer, #console-container {
+    box-shadow: 0px 0px 8px 3px #bbb;
+    border: 1px solid #CCCCCC;
+}
